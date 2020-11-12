@@ -1,29 +1,36 @@
-import axios from "axios";
+import agility from "@agility/content-fetch";
 
+// setup content fetch
+const api = agility.getApi({
+  guid: process.env.AGILITY_GUID,
+  apiKey: process.env.AGILITY_API_FETCH_KEY,
+});
+
+// get products
 const getProducts = async () => {
-  const data = await axios.get(
-    `https://${process.env.AGILITY_GUID}-api.agilitycms.cloud/fetch/en-us/list/products`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        apikey: `${process.env.AGILITY_API_FETCH_KEY}`,
-      },
-    }
-  );
+  const data = api
+    .getContentList({
+      referenceName: "products",
+      languageCode: "en-us",
+    })
+    .then(function (contentList) {
+      return contentList;
+    })
+    .catch(function (error) {
+      console.log("Error: " + error);
+    });
   return data;
 };
 
 export default async (req, res) => {
   const response = await getProducts();
 
-  const products = response.data.items.map((product) => {
-    // console.log(product)
+  const products = response.items.map((product) => {
     return {
       title: product.fields.title,
-      id: product.fields.title.replace(/\s+/g, "-").toLowerCase(),
+      image: product.fields.image.url,
       price: product.fields.price,
       description: product.fields.description,
-      image: product.fields.image.url,
     };
   });
 
