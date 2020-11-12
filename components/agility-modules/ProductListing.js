@@ -1,10 +1,11 @@
 import React from "react";
 import tw from "twin.macro";
 
-const Container = tw.div`max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3`;
-const Card = tw.div``;
-const Title = tw.h1`text-xl font-bold`;
+const Container = tw.div`max-w-4xl mx-auto grid gap-5 grid-cols-1 sm:grid-cols-3`;
+const Card = tw.div`my-8`;
+const Title = tw.h1`mt-2 text-xl font-bold`;
 const Price = tw.p`text-sm mb-2 text-primary-600`;
+const Button = tw.button`bg-primary-600 text-white w-full p-2 font-bold mt-2`;
 
 const ProductListing = ({ customData, fields, page }) => {
   const { products } = customData;
@@ -16,6 +17,7 @@ const ProductListing = ({ customData, fields, page }) => {
           <Title>{product.title}</Title>
           <Price>${product.price}</Price>
           <p>{product.description}</p>
+          <Button>Add to Cart</Button>
         </Card>
       ))}
     </Container>
