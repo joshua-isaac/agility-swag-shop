@@ -49,12 +49,14 @@ ProductListing.getCustomInitialProps = async function ({
 
     const products = rawProducts.map((product) => {
       const title = product.fields.title;
+      const id = product.fields.title.replace(/\s+/g, "-").toLowerCase();
       const description = product.fields.description;
       const image = product.fields.image.url;
       const price = product.fields.price;
 
       return {
         title,
+        id,
         description,
         image,
         price,
