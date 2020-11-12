@@ -28,6 +28,7 @@ export default async (req, res) => {
   const products = response.items.map((product) => {
     return {
       title: product.fields.title,
+      id: product.fields.title.replace(/\s+/g, "-").toLowerCase(),
       image: product.fields.image.url,
       price: product.fields.price,
       description: product.fields.description,
