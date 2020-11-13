@@ -35,8 +35,5 @@ export default async (req, res) => {
     };
   });
 
-  return res.status(200).json({
-    name: "hello",
-    lastName: "test",
-  });
+  return res.status(200).json(products);
 };
