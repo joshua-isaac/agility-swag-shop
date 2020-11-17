@@ -1,5 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
+import Image from "next/image";
 
 const Container = tw.div`container mx-auto grid gap-5 grid-cols-1 sm:grid-cols-3 mb-8`;
 const Card = tw.div`my-8`;
@@ -12,8 +13,13 @@ const ProductListing = ({ customData, fields, page }) => {
   return (
     <Container>
       {products.map((product, i) => (
-        <Card>
-          <img src={product.image} />
+        <Card key={i}>
+          <Image
+            src={product.image}
+            alt={product.title}
+            width={500}
+            height={500}
+          />
           <Title>{product.title}</Title>
           <Price>${product.price}</Price>
           <p>{product.description}</p>
