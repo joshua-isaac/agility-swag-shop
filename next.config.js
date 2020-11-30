@@ -1,6 +1,9 @@
 module.exports = {
   images: {
-    domains: [`${process.env.AGILITY_GUID}-cdn.agilitycms.cloud`],
+    domains: [
+      `cdn.aglty.io`,
+      `${process.env.AGILITY_GUID}-cdn.agilitycms.cloud`,
+    ],
   },
 
   webpack: (config, { isServer }) => {

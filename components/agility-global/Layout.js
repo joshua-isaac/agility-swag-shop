@@ -44,7 +44,7 @@ function Layout(props) {
         // Snipcart CSS
         <link
           rel="stylesheet"
-          href="https://cdn.snipcart.com/themes/v3.0.24/default/snipcart.css"
+          href="https://cdn.snipcart.com/themes/v3.0.26/default/snipcart.css"
         />
         {dynamicPageItem?.seo?.ogImage && (
           <meta property="og:image" content={dynamicPageItem.seo.ogImage} />
@@ -61,12 +61,13 @@ function Layout(props) {
         // Snipcart JS
         <script
           async
-          src="https://cdn.snipcart.com/themes/v3.0.24/default/snipcart.js"
+          src="https://cdn.snipcart.com/themes/v3.0.26/default/snipcart.js"
         ></script>
         // Snipcart Hidden Div
         <div
           id="snipcart"
           data-api-key="ZjMwMzc5OTItNWYwNi00ODUzLWE4YjctYjcxYjFmZmM2ODE0NjM3Mzk3NzQ0NzkwMjg1MDky"
+          data-config-modal-style="side"
           hidden
         ></div>
         {/* </AnimationRevealPage> */}
